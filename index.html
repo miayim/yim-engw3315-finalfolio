@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>on the threshold — a liminal cs journal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --ink: #1a1814;
+        --ink-muted: #6b6760;
+        --ink-faint: #b5b2ac;
+        --paper: #f7f4ef;
+        --paper-warm: #efe9e0;
+        --accent: #2d5a3d;
+        --accent-light: #e8f0ea;
+        --tag-piece: #3b3068;
+        --tag-piece-bg: #edeaf6;
+        --tag-reflection: #7a3a1e;
+        --tag-reflection-bg: #f6ede8;
+        --tag-intro: #1a4d38;
+        --tag-intro-bg: #e4f0ea;
+        --rule: #d8d3cb;
+        --serif: "Lora", Georgia, serif;
+        --mono: "JetBrains Mono", monospace;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        font-size: 16px;
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--serif);
+        background: var(--paper);
+        color: var(--ink);
+        line-height: 1.75;
+        min-height: 100vh;
+      }
+
+      /* ── layout ── */
+      .container {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* ── nav ── */
+      nav {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--rule);
+        position: sticky;
+        top: 0;
+        background: var(--paper);
+        z-index: 10;
+      }
+
+      nav .inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-brand {
+        font-family: var(--mono);
+        font-size: 13px;
+        color: var(--ink);
+        text-decoration: none;
+        letter-spacing: -0.01em;
+      }
+
+      .nav-brand span {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        font-family: var(--mono);
+        font-size: 12px;
+        color: var(--ink-muted);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        transition: color 0.15s;
+      }
+
+      .nav-links a:hover {
+        color: var(--ink);
+      }
+
+      /* ── hero ── */
+      .hero {
+        padding: 5rem 0 4rem;
+        border-bottom: 1px solid var(--rule);
+      }
+
+      .hero-label {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--ink-muted);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+      }
+
+      .hero-title {
+        font-family: var(--serif);
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 400;
+        line-height: 1.2;
+        color: var(--ink);
+        margin-bottom: 1.5rem;
+        max-width: 560px;
+      }
+
+      .hero-title em {
+        font-style: italic;
+        color: var(--accent);
+      }
+
+      .hero-body {
+        font-size: 1.05rem;
+        color: var(--ink-muted);
+        max-width: 520px;
+        line-height: 1.8;
+      }
+
+      /* ── section label ── */
+      .section-label {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--ink-faint);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 2rem 0 1.25rem;
+      }
+
+      /* ── entries ── */
+      .entry {
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--rule);
+        display: grid;
+        grid-template-columns: 100px 1fr;
+        gap: 0 2rem;
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 0.4s ease,
+          transform 0.4s ease;
+      }
+
+      .entry.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .entry-meta {
+        padding-top: 4px;
+      }
+
+      .entry-number {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--ink-faint);
+        display: block;
+        margin-bottom: 8px;
+      }
+
+      .tag {
+        display: inline-block;
+        font-family: var(--mono);
+        font-size: 10px;
+        font-weight: 500;
+        letter-spacing: 0.05em;
+        padding: 3px 7px;
+        border-radius: 3px;
+      }
+
+      .tag-intro {
+        background: var(--tag-intro-bg);
+        color: var(--tag-intro);
+      }
+      .tag-piece {
+        background: var(--tag-piece-bg);
+        color: var(--tag-piece);
+      }
+      .tag-reflection {
+        background: var(--tag-reflection-bg);
+        color: var(--tag-reflection);
+      }
+
+      .entry-content {
+      }
+
+      .entry-title {
+        font-size: 1.25rem;
+        font-weight: 500;
+        line-height: 1.3;
+        color: var(--ink);
+        margin-bottom: 0.6rem;
+      }
+
+      .entry-intro {
+        font-size: 0.95rem;
+        color: var(--ink-muted);
+        line-height: 1.75;
+        margin-bottom: 0.9rem;
+      }
+
+      .entry-link {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--accent);
+        text-decoration: none;
+        letter-spacing: 0.02em;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.15s;
+      }
+
+      .entry-link:hover {
+        border-bottom-color: var(--accent);
+      }
+
+      /* ── full entry content (hidden by default) ── */
+      .entry-body {
+        display: none;
+        margin-top: 1.25rem;
+        padding-top: 1.25rem;
+        border-top: 1px dashed var(--rule);
+        font-size: 0.95rem;
+        line-height: 1.85;
+        color: var(--ink);
+      }
+
+      .entry-body.open {
+        display: block;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .entry-body p {
+        margin-bottom: 1rem;
+      }
+      .entry-body p:last-child {
+        margin-bottom: 0;
+      }
+
+      .entry-body blockquote {
+        border-left: 2px solid var(--accent);
+        margin: 1.25rem 0;
+        padding-left: 1rem;
+        color: var(--ink-muted);
+        font-style: italic;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(4px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── footer ── */
+      footer {
+        padding: 3rem 0 2rem;
+        margin-top: 1rem;
+      }
+
+      .footer-inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .footer-note {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--ink-faint);
+        line-height: 1.6;
+      }
+
+      .footer-deco {
+        font-family: var(--mono);
+        font-size: 11px;
+        color: var(--rule);
+      }
+
+      /* ── responsive ── */
+      @media (max-width: 560px) {
+        .entry {
+          grid-template-columns: 1fr;
+          gap: 0.5rem 0;
+        }
+        .entry-meta {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding-top: 0;
+        }
+        .footer-inner {
+          flex-direction: column;
+          gap: 0.75rem;
+          align-items: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="container inner">
+        <a class="nav-brand" href="#"><span>//</span> on the threshold</a>
+        <ul class="nav-links">
+          <li><a href="#about">about</a></li>
+          <li><a href="#entries">entries</a></li>
+          <li><a href="#reflection">reflection</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header class="hero" id="about">
+        <p class="hero-label">a liminal cs journal</p>
+        <h1 class="hero-title">
+          where computer science meets <em>the human things</em>
+        </h1>
+        <p class="hero-body">
+          A folio written at the threshold between the technical and the lived.
+          These entries ask what it means to build systems — and what those
+          systems mean for the people inside them. Written for a writing course.
+          Kept because the questions didn't stop there.
+        </p>
+      </header>
+
+      <p class="section-label" id="entries">entries</p>
+
+      <!-- Entry 1 -->
+      <article class="entry" data-index="0">
+        <div class="entry-meta">
+          <span class="entry-number">01</span>
+          <span class="tag tag-intro">intro</span>
+        </div>
+        <div class="entry-content">
+          <h2 class="entry-title">What does it mean to be on the threshold?</h2>
+          <p class="entry-intro">
+            A short note on why this journal exists — and what "liminal" means
+            when applied to a discipline that often resists softness. This is
+            the space between the technical and the lived.
+          </p>
+          <a class="entry-link" href="#" onclick="toggleEntry(this, event)"
+            >read entry ↓</a
+          >
+          <div class="entry-body">
+            <p>
+              In our class discussion, someone used the word <em>liminal</em> —
+              the space of thresholds, of being between one thing and another. I
+              couldn't stop thinking about it in the context of computer
+              science.
+            </p>
+            <p>
+              CS is usually framed as a discipline of precision: correct
+              answers, working code, provable theorems. But so much of what
+              makes it interesting to me lives in the in-between: between a
+              design decision and its human consequences, between a system and
+              the people it shapes, between what we build and why we build it.
+            </p>
+            <blockquote>
+              The question isn't just "does it compile?" It's "what does it do
+              to people when it runs?"
+            </blockquote>
+            <p>
+              This journal is my attempt to write from that threshold. The
+              entries here are pieces I wrote over the course of a semester —
+              revised, reflected on, and placed in conversation with each other.
+              They are technical and personal, analytical and uncertain. I hope
+              that feels intentional, not unfinished.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Entry 2 -->
+      <article class="entry" data-index="1">
+        <div class="entry-meta">
+          <span class="entry-number">02</span>
+          <span class="tag tag-piece">piece</span>
+        </div>
+        <div class="entry-content">
+          <h2 class="entry-title">The dropdown that decided who you were</h2>
+          <p class="entry-intro">
+            On how small design decisions — a form field, a forced binary — can
+            encode assumptions about identity and scale into environments that
+            shape real lives.
+          </p>
+          <a class="entry-link" href="#" onclick="toggleEntry(this, event)"
+            >read entry ↓</a
+          >
+          <div class="entry-body">
+            <p>
+              <em
+                >[Paste your Social Justice: Taking/Writing Action(s) piece
+                here. You can add a short contextual note before it, explaining
+                how it connects to the liminal theme — for example, how the gap
+                between a design decision and its real-world consequence is
+                itself a kind of threshold.]</em
+              >
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Entry 3 -->
+      <article class="entry" data-index="2">
+        <div class="entry-meta">
+          <span class="entry-number">03</span>
+          <span class="tag tag-piece">piece</span>
+        </div>
+        <div class="entry-content">
+          <h2 class="entry-title">Reading like a ____________</h2>
+          <p class="entry-intro">
+            What happens when you approach a text the way you'd approach a proof
+            or a program? On structure, audience, and the surprising overlap
+            between writing and systems thinking.
+          </p>
+          <a class="entry-link" href="#" onclick="toggleEntry(this, event)"
+            >read entry ↓</a
+          >
+          <div class="entry-body">
+            <p>
+              <em
+                >[Paste your How to Read Like a ____________ piece here.
+                Consider adding a brief framing note about how this piece
+                changed the way you think about writing as construction — and
+                how that connects to your identity as someone who thinks in CS
+                and math.]</em
+              >
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Entry 4 -->
+      <article class="entry" data-index="3">
+        <div class="entry-meta">
+          <span class="entry-number">04</span>
+          <span class="tag tag-piece">piece</span>
+        </div>
+        <div class="entry-content">
+          <h2 class="entry-title">
+            Is computer science really about computers?
+          </h2>
+          <p class="entry-intro">
+            A look at what CS borrows from other fields — and what those fields
+            reveal about CS. Includes a conversation about AI, authorship, and
+            whether a machine can intend something.
+          </p>
+          <a class="entry-link" href="#" onclick="toggleEntry(this, event)"
+            >read entry ↓</a
+          >
+          <div class="entry-body">
+            <p>
+              <em
+                >[Paste your (How) is your discipline interdisciplinary? piece
+                here. You might add a note about the exchange with your
+                classmate on AI and art — frame it as an example of how dialogue
+                sharpened your thinking, and how that's itself an
+                interdisciplinary act.]</em
+              >
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- Entry 5 — Final Reflection -->
+      <article class="entry" id="reflection" data-index="4">
+        <div class="entry-meta">
+          <span class="entry-number">05</span>
+          <span class="tag tag-reflection">reflection</span>
+        </div>
+        <div class="entry-content">
+          <h2 class="entry-title">
+            What I learned about writing by thinking like a programmer
+          </h2>
+          <p class="entry-intro">
+            A final note on how this semester changed the way I write, think,
+            and read — and why the space between disciplines might be where the
+            most interesting work happens.
+          </p>
+          <a class="entry-link" href="#" onclick="toggleEntry(this, event)"
+            >read entry ↓</a
+          >
+          <div class="entry-body">
+            <p>
+              <em
+                >[Paste your final reflection here. This is the most recent
+                "entry" in the journal, so it can read with a slightly different
+                register — more retrospective, more settled. Let it refer back
+                to the earlier entries naturally, the way a journal would.]</em
+              >
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <footer>
+        <div class="footer-inner">
+          <p class="footer-note">
+            on the threshold — a liminal cs journal<br />
+            written &amp; designed as a final folio
+          </p>
+          <p class="footer-deco">// end of file</p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      function toggleEntry(link, e) {
+        e.preventDefault();
+        const body = link.nextElementSibling;
+        const isOpen = body.classList.contains("open");
+        body.classList.toggle("open", !isOpen);
+        link.textContent = isOpen ? "read entry ↓" : "close entry ↑";
+      }
+
+      const entries = document.querySelectorAll(".entry");
+      const observer = new IntersectionObserver(
+        (obs) => {
+          obs.forEach((el) => {
+            if (el.isIntersecting) {
+              const delay = parseInt(el.dataset.index || 0) * 60;
+              setTimeout(() => el.classList.add("visible"), delay);
+              observer.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+      entries.forEach((e) => observer.observe(e));
+    </script>
+  </body>
+</html>

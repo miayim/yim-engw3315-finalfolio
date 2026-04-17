@@ -158,16 +158,21 @@
         display: grid;
         grid-template-columns: 100px 1fr;
         gap: 0 2rem;
-        opacity: 0;
-        transform: translateY(12px);
+        opacity: 1;
+        transform: translateY(0);
         transition:
           opacity 0.4s ease,
           transform 0.4s ease;
       }
 
+      .entry.animate-hidden {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
       .entry.visible {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1 !important;
+        transform: translateY(0) !important;
       }
 
       .entry-meta {
@@ -415,14 +420,196 @@
           >
           <div class="entry-body">
             <p>
-              <em
-                >[Paste your Social Justice: Taking/Writing Action(s) piece
-                here. You can add a short contextual note before it, explaining
-                how it connects to the liminal theme — for example, how the gap
-                between a design decision and its real-world consequence is
-                itself a kind of threshold.]</em
-              >
+              This is the piece I keep coming back to when I think about why
+              this journal exists. It started as a writing assignment about
+              social justice and computer science. It became something more
+              personal. The threshold here is literal: the gap between a design
+              decision made without consideration and the life of a person that
+              decision touches. I wrote this as a letter. I still mean all of
+              it.
             </p>
+
+            <div
+              style="
+                margin: 1.75rem 0;
+                padding-left: 1.25rem;
+                border-left: 2px solid var(--rule);
+              "
+            >
+              <p
+                style="
+                  font-family: var(--mono);
+                  font-size: 11px;
+                  color: var(--ink-faint);
+                  letter-spacing: 0.08em;
+                  text-transform: uppercase;
+                  margin-bottom: 1.25rem;
+                "
+              >
+                To computer scientists:
+              </p>
+
+              <p style="margin-bottom: 0.5rem">
+                In computer science, binary is the default.
+              </p>
+              <p style="margin-bottom: 0.5rem">
+                0s and 1s are the very foundation of every function.
+              </p>
+              <p style="margin-bottom: 1.25rem">
+                By nature, we are taught to think within rigid boxes with
+                specific notions of truth.
+              </p>
+
+              <p style="margin-bottom: 0.5rem">
+                People are made up of many truths.
+              </p>
+              <p style="margin-bottom: 0.5rem">
+                The body is one kind of truth.
+              </p>
+              <p style="margin-bottom: 1.25rem">Identity is another.</p>
+
+              <p style="margin-bottom: 1.25rem">
+                Most systems are designed under the assumption that those two
+                truths are the same.<br />But what about when they are not?
+              </p>
+
+              <p style="margin-bottom: 1.25rem">
+                The truth of a body I did not choose is kept in databases I have
+                never seen and in code written by people who never considered
+                me. So many of the systems that shape our reality quietly
+                enforce a truth. Right now, many of those systems are built in a
+                way that makes people like me harder to recognize and easier to
+                challenge.
+              </p>
+
+              <p style="margin-bottom: 0.5rem; color: var(--ink-muted)">
+                A dropdown menu with two options.
+              </p>
+              <p style="margin-bottom: 0.5rem; color: var(--ink-muted)">
+                A required field that won't let you proceed.
+              </p>
+              <p style="margin-bottom: 0.5rem; color: var(--ink-muted)">
+                A scan at the airport going through TSA.
+              </p>
+              <p style="margin-bottom: 1.25rem; color: var(--ink-muted)">
+                A bathroom.
+              </p>
+
+              <p style="margin-bottom: 0.5rem">
+                These are small things. At least they feel small when you build
+                them. Edge cases saved for later.
+              </p>
+              <p style="margin-bottom: 0.5rem">But systems scale.</p>
+              <p style="margin-bottom: 1.25rem">
+                And when they do, those small decisions create environments.
+              </p>
+
+              <p style="margin-bottom: 1.25rem">
+                In Kansas, a law says that identity must return to the sex
+                assigned at birth. The bathrooms must align with that truth.
+                That someone can take legal action if they feel harmed by your
+                presence alone.
+              </p>
+
+              <p style="margin-bottom: 1.25rem">
+                A law like that does not exist in isolation. It relies on
+                systems to enforce it.
+              </p>
+
+              <p style="margin-bottom: 1.25rem">
+                In the same way rivers are redirected, contained, and buried
+                beneath cities so that streets can exist where water once flowed
+                freely, identity is redirected, too. Forced into channels that
+                make the system easier to maintain.
+              </p>
+
+              <p style="margin-bottom: 0.5rem">
+                But water does not stop existing because you force it down a
+                pipe.
+              </p>
+              <p style="margin-bottom: 1.25rem">
+                People do not stop existing because a system fails to account
+                for them.
+              </p>
+
+              <p style="margin-bottom: 1.25rem">
+                It is easy to think of these problems as strictly social or
+                political issues.<br />But they are also design problems, which
+                means they have solutions.
+              </p>
+
+              <p style="margin-bottom: 0.5rem">
+                That solution, summarized by a single word:
+                <em>consideration</em>.
+              </p>
+              <p style="margin-bottom: 0.5rem; color: var(--ink-muted)">
+                Design systems with the people who use them in mind.
+              </p>
+              <p style="margin-bottom: 0.5rem; color: var(--ink-muted)">
+                Design for complexity instead of convenience.
+              </p>
+              <p style="margin-bottom: 1.25rem; color: var(--ink-muted)">
+                Design for reality instead of assumptions.
+              </p>
+
+              <p style="margin-bottom: 1.25rem">
+                Because every dropdown, every policy is making a claim about who
+                is allowed to exist comfortably in the world.
+              </p>
+
+              <p style="margin-bottom: 0.5rem">
+                Despite all of this, trans people are still here.
+              </p>
+              <p style="margin-bottom: 0.5rem">
+                Just as they always have been.
+              </p>
+              <p style="margin-bottom: 1.25rem">Just as they always will be.</p>
+
+              <p style="margin-bottom: 1.25rem">
+                There is something quietly beautiful about that.<br />
+                To exist without permission and without apology.<br />
+                To find joy in a world that was not built for you.
+              </p>
+
+              <p style="margin-bottom: 1.25rem">
+                It is easy to focus on the things that are hard, defining trans
+                existence with struggle. But what has defined my experiences as
+                a trans person so much more is joy.
+              </p>
+
+              <p style="margin-bottom: 0.5rem; color: var(--ink-muted)">
+                It is laughter in spaces that expect silence.
+              </p>
+              <p style="margin-bottom: 0.5rem; color: var(--ink-muted)">
+                It is a community built where systems have left gaps.
+              </p>
+              <p style="margin-bottom: 1.25rem; color: var(--ink-muted)">
+                It is choosing yourself, again and again, even when systems
+                refuse to.
+              </p>
+
+              <p style="margin-bottom: 1.25rem">
+                Not everyone writes code or passes laws.<br />But everyone
+                participates in systems, whether they realize it or not.
+              </p>
+
+              <p style="margin-bottom: 0.5rem">
+                Anyone can question the defaults.
+              </p>
+              <p style="margin-bottom: 1.25rem">
+                You can notice who is left out.
+              </p>
+
+              <p style="margin-bottom: 1.25rem">
+                And maybe most importantly, you can uplift the people around
+                you.<br />Make space for everyone to exist loudly.
+              </p>
+
+              <p>
+                Because the world changes the same way systems are built, one
+                decision at a time.
+              </p>
+            </div>
           </div>
         </div>
       </article>
@@ -445,13 +632,149 @@
           >
           <div class="entry-body">
             <p>
-              <em
-                >[Paste your How to Read Like a ____________ piece here.
-                Consider adding a brief framing note about how this piece
-                changed the way you think about writing as construction — and
-                how that connects to your identity as someone who thinks in CS
-                and math.]</em
+              This piece sits at the heart of what this journal is trying to do.
+              Writing about reading — and doing it through the lens of CS and
+              math — helped me see that the two disciplines aren't as separate
+              as they're usually treated. Both are about noticing design, asking
+              why, and learning from what came before you.
+            </p>
+
+            <p
+              style="
+                font-family: var(--mono);
+                font-size: 11px;
+                color: var(--ink-faint);
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin: 1.5rem 0 0.5rem;
+              "
+            >
+              Part one
+            </p>
+
+            <p>
+              What I liked most about Mike Bunn's
+              <em>How to Read Like a Writer</em> is that it gives a name to
+              something I already do instinctively: considering the choices
+              behind a piece of writing, not just the story or argument itself.
+              Bunn describes reading like a writer as paying attention to how
+              the text was constructed so that you learn how to "build" one for
+              yourself, and that framing really resonated with me. It treats
+              writing less like magic and more like engineering. Something built
+              intentionally, piece by piece, by someone who made a series of
+              decisions.
+            </p>
+            <p>
+              I feel like this mindset connects strongly to how I already think
+              in math and computer science. In those fields, you're always
+              asking why something was designed a certain way: Why this
+              algorithm? Why this structure? Why this proof strategy? To me,
+              reading like a writer feels similar. It's about noticing the
+              design decisions and thinking through their consequences.
+            </p>
+            <p>
+              I've definitely read like a writer before, both consciously and
+              unconsciously. It became a bigger habit after AP English, where we
+              spent time analyzing reading as writers — especially in our poetry
+              and personal essays unit. I remember reading
+              <em>Invisible Man</em> with the theme of music in mind, and
+              finding that I got much more out of the book by keeping track of
+              how and why Ralph Ellison used that theme as a tool. We also read
+              personal essays closely in order to find choices we liked and
+              apply those techniques to our college essays. As a result, I often
+              read with the author's intentions in mind — noticing repeated
+              symbols, the pacing of scenes, the way a sentence is shaped.
+            </p>
+            <p>
+              One idea I've always struggled with is getting caught up in what
+              the author did "on purpose" versus what might have been
+              accidental. But Bunn helped me realize that this doesn't really
+              matter. If something means something to a reader who is reading
+              like a writer, that reader can still learn from it and apply it to
+              their own writing. Even if the author didn't consciously plan it,
+              the effect is still real and still useful as a model.
+            </p>
+            <blockquote>
+              "When you read like a writer, you are trying to figure out how the
+              text you are reading was constructed so that you learn how to
+              'build' one for yourself."
+            </blockquote>
+            <p>
+              To me, this frames reading as part of a long chain of progress:
+              learning from people who came before you, studying their methods,
+              and then adapting or improving on them. You don't start from
+              nothing; you study existing solutions and learn how they work.
+            </p>
+
+            <p
+              style="
+                font-family: var(--mono);
+                font-size: 11px;
+                color: var(--ink-faint);
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin: 1.5rem 0 0.5rem;
+              "
+            >
+              Part two — how to read like a computer science and math major
+            </p>
+
+            <p>
+              Reading like a computer science and math major means reading with
+              an eye for structure, design choices, and purpose.
+            </p>
+
+            <p>
+              <strong style="font-weight: 500"
+                >First, always look for the design choices.</strong
               >
+              Ask: Why did the author structure this explanation this way? Why
+              introduce this concept before that one? Why use this example
+              instead of another? It's like making sure you define a function
+              before calling it — order matters. Every proof, algorithm, or
+              system is the result of tradeoffs. Writing is no different.
+            </p>
+
+            <p>
+              <strong style="font-weight: 500"
+                >Second, read as if you might have to explain it.</strong
+              >
+              When reading something technical — a textbook, paper, or
+              documentation — ask: Where does this get confusing? What
+              assumptions does the author make about the reader? What would I
+              change if I had to teach this?
+            </p>
+
+            <p>
+              <strong style="font-weight: 500"
+                >Third, practice zooming in and zooming out.</strong
+              >
+              In CS and math, it's important to remember the bigger picture
+              while also attending to the details.
+            </p>
+            <p style="margin-left: 1.25rem; color: var(--ink-muted)">
+              Zoom in: Look closely at a definition, a paragraph, a line of
+              code, or a single step in a proof. Why is it written this way?<br />
+              Zoom out: Look at the whole structure. How does this section fit
+              into the chapter? How does this idea support the overall goal?
+            </p>
+
+            <p>
+              <strong style="font-weight: 500"
+                >Fourth, think about context.</strong
+              >
+              Who is this written for? What does the author assume you already
+              know? What problem is this trying to solve?
+            </p>
+
+            <p>
+              <strong style="font-weight: 500"
+                >Finally, step away and come back.</strong
+              >
+              In math and CS, stepping away from a problem often makes the
+              structure suddenly clearer. The same is true for reading: when you
+              return, you can often see patterns, gaps, and design decisions you
+              missed the first time.
             </p>
           </div>
         </div>
@@ -477,13 +800,116 @@
           >
           <div class="entry-body">
             <p>
-              <em
-                >[Paste your (How) is your discipline interdisciplinary? piece
-                here. You might add a note about the exchange with your
-                classmate on AI and art — frame it as an example of how dialogue
-                sharpened your thinking, and how that's itself an
-                interdisciplinary act.]</em
-              >
+              One of the things I've come to believe over the course of this
+              semester is that computer science is most interesting at its edges
+              — where it bumps up against other disciplines and has to
+              negotiate. This piece started as a discussion post about
+              interdisciplinarity, but it turned into something I keep coming
+              back to: the idea that the problems worth solving are almost
+              always too big for one field.
+            </p>
+
+            <p
+              style="
+                font-family: var(--mono);
+                font-size: 11px;
+                color: var(--ink-faint);
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin: 1.5rem 0 0.5rem;
+              "
+            >
+              Part one
+            </p>
+
+            <p>
+              After reading sections 1 and 2 of
+              <em>A Time for Interdisciplinarity</em>, I find myself having to
+              agree with the notion that interdisciplinarity — and purposefully
+              teaching it in universities — is critical. The reading argues that
+              interdisciplinary collaboration is a prerequisite for science to
+              contribute to major problems, the so-called "wicked problems," and
+              thus generate real impact from knowledge. I think that all of us
+              here have an advantage in understanding the value of
+              interdisciplinary education, given that we all study at a
+              university that facilitates such learning through combined majors
+              across colleges.
+            </p>
+            <p>
+              Intentionally learning in an interdisciplinary way teaches us to
+              speak each other's academic languages. Perhaps that feels both
+              obvious and hard. Obvious because collaboration always requires
+              communication, but hard because every discipline has its own
+              assumptions, vocabulary, and standards of proof. Learning from
+              different disciplines shows us how to become learners and
+              synthesizers, not just parrots of theorems and definitions we have
+              memorized. We learn how and why different disciplines have
+              different methods, rather than getting stuck in one way of seeing
+              the world.
+            </p>
+            <p>
+              Something I found surprising in the reading was the spectrum of
+              terms: multidisciplinarity, interdisciplinarity,
+              transdisciplinarity, cross-disciplinarity, even
+              postdisciplinarity. I didn't realize there were so many distinct
+              modes. I especially liked the idea that interdisciplinarity exists
+              on a continuum — from simple communication between fields all the
+              way to full integration of methods, concepts, and ways of
+              thinking. Distinguishing between them matters because it allows us
+              to be more intentional about how we engage across disciplines and
+              how we communicate when doing so.
+            </p>
+            <blockquote>
+              Interdisciplinarity isn't just a preference — it's something we
+              need when the problem itself is too big for one field.
+            </blockquote>
+
+            <p
+              style="
+                font-family: var(--mono);
+                font-size: 11px;
+                color: var(--ink-faint);
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                margin: 1.5rem 0 0.5rem;
+              "
+            >
+              Part two
+            </p>
+
+            <p>
+              My combined major of math and computer science has elements that
+              are multidisciplinary, cross-disciplinary, and interdisciplinary —
+              often all at once.
+            </p>
+            <p>
+              AI is the clearest example. It isn't just computer science; it
+              involves math, statistics, psychology, ethics, and increasingly
+              law and philosophy. Sometimes those fields just work side by side,
+              but sometimes they genuinely have to integrate — especially when
+              talking about fairness, bias, or real-world impact. The problems
+              are too complex, too social, and too embedded in the real world to
+              stay purely technical. AI can also be used to create art, music,
+              poetry, essays — which raises its own questions about intention
+              and authorship that I find genuinely hard to resolve.
+            </p>
+            <p>
+              I see math as a heavily cross-disciplinary field in a different
+              way — less about integration and more about reach. Math can be
+              used to explain so many other fields: there is math in chemistry,
+              music, medicine, biology. Biology becomes computational biology,
+              linguistics becomes NLP, art becomes generative algorithms. Part
+              of the reason I chose to study math was this idea that it is
+              everywhere, a kind of universal language that persists naturally
+              in the structure of our universe. I find that genuinely exciting.
+            </p>
+            <p>
+              And computer science itself — I think of its interdisciplinarity
+              as its core purpose. We use computers as a method to deepen our
+              understanding of other fields, to connect ideas across distances,
+              to make new kinds of collaboration possible. After all, the
+              devices we're all using to read this are made possible by the
+              intersection of many fields working together.
             </p>
           </div>
         </div>
@@ -541,12 +967,19 @@
       }
 
       const entries = document.querySelectorAll(".entry");
+      const viewportH = window.innerHeight;
+      entries.forEach((e) => {
+        const rect = e.getBoundingClientRect();
+        if (rect.top > viewportH) {
+          e.classList.add("animate-hidden");
+        }
+      });
       const observer = new IntersectionObserver(
         (obs) => {
           obs.forEach((el) => {
             if (el.isIntersecting) {
-              const delay = parseInt(el.dataset.index || 0) * 60;
-              setTimeout(() => el.classList.add("visible"), delay);
+              el.classList.remove("animate-hidden");
+              el.classList.add("visible");
               observer.unobserve(el);
             }
           });
